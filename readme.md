@@ -13,7 +13,7 @@ Keep your Obsidian docs organized with automatically generated Tables of Content
 ## Getting Started
 
 1. Install and enable the plugin
-2. Hit `Cmd/Ctrl + P` and type "Create TOC" to add your first table of contents
+2. Hit `Cmd/Ctrl + P` and type "Insert TOC" to add your first table of contents
 3. Click the refresh button in your sidebar to update TOCs after making changes
 
 ## Commands
