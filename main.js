@@ -296,9 +296,8 @@ var TickTocPlugin = class extends import_obsidian.Plugin {
     toc += "\n";
     headers.forEach((header) => {
       const indent = "  ".repeat(header.level - 1);
-      const link = this.createHeaderLink(header.text);
-      let prefix = this.settings.listStyle === "number" ? `${header.numberingPath.join(".")}. ` : `- `;
-      let entry = `${indent}${prefix}[[#${link}|${header.text}]]`;
+      const prefix = this.settings.listStyle === "number" ? `${header.numberingPath.join(".")}. ` : `- `;
+      let entry = `${indent}${prefix}[[#${header.text}|${header.text}]]`;
       if (this.settings.showTimeToRead && header.contentUntilNext) {
         const timeToRead = this.calculateTimeToRead(header.contentUntilNext);
         if (timeToRead > 0) {
@@ -320,9 +319,6 @@ var TickTocPlugin = class extends import_obsidian.Plugin {
       return date.toISOString();
     }
     return date.toLocaleDateString() + " " + date.toLocaleTimeString();
-  }
-  createHeaderLink(headerText) {
-    return headerText.toLowerCase().replace(/[^a-z0-9\s-]/g, "").replace(/\s+/g, "-");
   }
 };
 var TickTocSettingTab = class extends import_obsidian.PluginSettingTab {
