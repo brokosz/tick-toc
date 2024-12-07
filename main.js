@@ -252,8 +252,13 @@ var TickTocPlugin = class extends import_obsidian.Plugin {
     const lines = content.split("\n");
     const headers = [];
     let levelNumbers = [];
+    let inCodeBlock = false;
     for (let i = 0; i < lines.length; i++) {
-      const match = lines[i].match(/^(#{1,6})\s(.+)/);
+      if (lines[i].trim().startsWith("```")) {
+        inCodeBlock = !inCodeBlock;
+        continue;
+      }
+      const match = !inCodeBlock && lines[i].match(/^(#{1,6})\s(.+)/);
       if (match) {
         if (match[2].trim() === "Table of Contents")
           continue;
